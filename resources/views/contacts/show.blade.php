@@ -38,7 +38,9 @@
                                         <div class="relative">
                                             @if($contact->url)
                                             <label for="url" class="leading-7 text-sm text-gray-600">ホームページ</label>
-                                            <div class="w-full rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ $contact->url }}</div>
+                                            <div class="w-full rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                                <a href="{{ $contact->url }}" target="_blank" class="text-blue-500 underline">{{ $contact->url }}</a>
+                                            </div>
                                             @endif
                                         </div>
                                     </div>
@@ -73,8 +75,9 @@
 
                                     <form id="delete_{{ $contact->id }}" method="post" action="{{ route('contacts.destroy', ['id' => $contact->id])}}">
                                         @csrf
+                                        @method('DELETE')
                                         <div class="p-2 w-full">
-                                            <a href="#" data-id="{{ $contact->id }}" onclick="deletePost(this)" class="flex mx-auto text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none hover:bg-pink-600 rounded text-lg">削除する</a>
+                                            <button type="button" onclick="deletePost(this)" data-id="{{ $contact->id }}">削除する</button>
                                         </div>
                                     </form>
                                 </div>

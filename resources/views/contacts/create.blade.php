@@ -28,7 +28,7 @@
                                     <div class="flex flex-wrap -m-2">
                                         <div class="p-2 w-full">
                                             <div class="relative">
-                                                <label for="name" class="leading-7 text-sm text-gray-600">氏名</label>
+                                                <label for="name">氏名 <span class="text-red-500">*</span></label>
                                                 <input type="text" id="name" name="name" value="{{ old('name') }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                             </div>
@@ -71,7 +71,7 @@
                                         <div class="p-2 w-full">
                                             <div class="relative">
                                                 <label for="age" class="leading-7 text-sm text-gray-600">年齢</label>
-                                                <select name="age">
+                                                <select name="age" class="w-full border rounded px-3 py-2">
                                                     <option value="">選択してください</option>
                                                     <option value="1" {{ old('age') == 1 ? 'selected' : ''}}>〜19歳</option>
                                                     <option value="2" {{ old('age') == 2 ? 'selected' : ''}}>20歳〜29歳</option>
@@ -94,7 +94,7 @@
 
                                         <div class="p-2 w-full">
                                             <div class="relative">
-                                                <input type="checkbox" id="caution" name="caution">注意事項に同意する</input>
+                                                <input type="checkbox" id="caution" name="caution" value="1" {{ old('caution') ? 'checked' : '' }}><label for="caution">注意事項に同意する</label>
                                                 <x-input-error :messages="$errors->get('caution')" class="mt-2" />
                                             </div>
                                         </div>

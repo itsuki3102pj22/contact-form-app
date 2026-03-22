@@ -21,12 +21,14 @@ class ContactForm extends Model
 
     public function scopeSearch($query, $search)
     {
-        if ($search !== null) {
+        if (!empty($search)) {
             $search_split = mb_convert_kana($search, 's'); //全角スペースを半角
             $search_split2 = preg_split('/[\s]+/', $search_split); //空白で区切る
-            foreach ($search_split2 as $value) {
-                $query->where('name', 'like', '%' . $value . '%');
-            }
+            $query->where(function ($query) use ($search_split2) {
+                foreach ($search_split2 as $value) {
+                    $query->orWhere('name', 'like', "%{$value}%");
+                }
+            });
         }
         return $query;
     }
