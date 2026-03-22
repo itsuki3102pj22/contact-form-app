@@ -29,8 +29,8 @@ class StoreContactRequest extends FormRequest
             'url' => ['url', 'nullable'],
             'gender' => ['required', 'boolean'],
             'age' => ['required'],
-            'contact' => ['required', 'string', 'max:200'],
-            'caution' => ['required','accepted']
+            'contact' => ['nullable', 'string', 'max:200'],
+            //'caution' => ['required','accepted']
         ];
     }
 }

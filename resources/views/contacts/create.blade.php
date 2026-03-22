@@ -5,8 +5,8 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-12 flex justify-center">
+        <div class="max-w-7xl w-full sm:px-6 lg:px-8">
             <!-- 全体エラー表示 -->
             @if ($errors->any())
             <div class="mb-4 text-red-600">

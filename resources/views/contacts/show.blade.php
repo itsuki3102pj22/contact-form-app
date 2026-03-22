@@ -5,8 +5,8 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-12 flex justify-center">
+        <div class="max-w-7xl w-full sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <section class="text-gray-600 body-font relative">
@@ -67,17 +67,22 @@
                                         </div>
                                     </div>
 
-                                    <form method="get" action="{{ route('contacts.edit', ['id' => $contact->id])}}">
+                                    <form method="get" action="{{ route('contacts.edit', ['contact' => $contact->id])}}">
                                         <div class="p-2 w-full">
                                             <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">編集する</button>
                                         </div>
                                     </form>
 
-                                    <form id="delete_{{ $contact->id }}" method="post" action="{{ route('contacts.destroy', ['id' => $contact->id])}}">
+                                    <form id="delete_{{ $contact->id }}" method="post" action="{{ route('contacts.destroy', ['contact' => $contact->id])}}">
                                         @csrf
                                         @method('DELETE')
                                         <div class="p-2 w-full">
-                                            <button type="button" onclick="deletePost(this)" data-id="{{ $contact->id }}">削除する</button>
+                                            <button
+                                                class="flex mx-auto text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none hover:bg-pink-600 rounded text-lg"
+                                                onclick="deletePost(this)"
+                                                data-id="{{ $contact->id }}">
+                                                削除する
+                                            </button>
                                         </div>
                                     </form>
                                 </div>

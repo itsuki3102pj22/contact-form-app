@@ -5,17 +5,17 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-12 flex justify-center">
+        <div class="max-w-7xl w-full sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
+                <div class="flex flex-col items-center mb-8 space-y-4">
                     <a href="{{ route('contacts.create') }}" class="text-blue-500">新規登録</a>
                     <form class="mb-8" method="get" action="{{ route('contacts.index') }}">
                         <input type="text" name="search" value="{{ request('search') }}" placeholder="名前・メール・件名で検索" class="border rounded px-3 py-2" />
                         <button class="ml-2 text-white bg-indigo-500 px-4 py-2 rounded hover:bg-indigo-600">検索</button>
                     </form>
                     <div class="w-full overflow-auto">
-                        <table claÍss="table-auto w-full text-left whitespace-no-wrap">
+                        <table class="table-auto mx-auto w-full text-left whitespace-no-wrap">
                             <thead>
                                 <tr>
                                     <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">id</th>
@@ -32,7 +32,7 @@
                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{ $contact->name }}</td>
                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{ $contact->title }}</td>
                                     <td class="border-t-2 border-gray-200 px-4 py-3">{{ $contact->created_at->format('Y-m-d') }}</td>
-                                    <td class="border-t-2 border-gray-200 px-4 py-3"><a class="text-blue-500" href="{{ route('contacts.show', ['id' => $contact->id]) }}">詳細</a></td>
+                                    <td class="border-t-2 border-gray-200 px-4 py-3"><a class="text-blue-500" href="{{ route('contacts.show', ['contact' => $contact->id]) }}">詳細</a></td>
                                 </tr>
                                 @empty
                                 <tr>

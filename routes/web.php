@@ -8,29 +8,7 @@ use App\Http\Controllers\ContactFormController;
 
 Route::get('tests/test', [testController::class, 'index']);
 
-// Route::resource('contacts', ContactFormController::class);
-
-
-Route::prefix('contacts')->middleware(['auth'])
-->controller(ContactFormController::class)
-->name('contacts.')
-->group(function(){
-    Route::get('/', 'index')->name('index');
-    Route::get('/create', 'create')->name('create');
-    Route::post('/', 'store')->name('store');
-    Route::get('/{id}', 'show')->name('show');
-    Route::get('/{id}/edit', 'edit')->name('edit');
-    Route::post('/{id}', 'update')->name('update');
-    Route::post('/{id}/destroy', 'destroy')->name('destroy');
-});
-
-
-
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('contacts', ContactFormController::class)->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
